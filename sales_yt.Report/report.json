@@ -423,22 +423,26 @@
           "z": 2000.00
         },
         {
-          "config": "{\"name\":\"b29c9a05b9820c23584e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":920.6365871240827,\"y\":467.8893181272065,\"z\":3000,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"funnel\",\"drillFilterOtherVisuals\":true}}",
+          "config": "{\"name\":\"b29c9a05b9820c23584e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":920.6365871240827,\"y\":467.8893181272065,\"z\":2001,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":2001}}],\"singleVisual\":{\"visualType\":\"funnel\",\"drillFilterOtherVisuals\":true}}",
           "filters": "[]",
           "height": 149.91,
           "width": 299.81,
           "x": 920.64,
-          "y": 467.89,
-          "z": 3000.00
+          "y": 467.89
         },
         {
+<<<<<<< HEAD
           "config": "{\"name\":\"c58ab583008291491a3d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":979.6905787323709,\"y\":25.741483521561523,\"z\":4000,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"hundredPercentStackedColumnChart\",\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'CommitA'\"}}}}}]}}}",
+=======
+          "config": "{\"name\":\"c58ab583008291491a3d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":979.6905787323709,\"y\":25.741483521561523,\"z\":2001,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":2001}}],\"singleVisual\":{\"visualType\":\"hundredPercentStackedColumnChart\",\"drillFilterOtherVisuals\":true}}",
+>>>>>>> parent of 472f088 (PageA)
           "filters": "[]",
           "height": 149.91,
           "width": 299.81,
           "x": 979.69,
           "y": 25.74,
-          "z": 4000.00
+
+          "z": 2001.00
         },
         {
           "config": "{\"name\":\"e52a515885048b32b535\",\"layouts\":[{\"id\":0,\"position\":{\"x\":640.4911742133537,\"y\":199.41673062164236,\"z\":0,\"width\":279.96930161166534,\"height\":160.12279355333843,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"InputData.CurrentMonth\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"InputData\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"CurrentMonth\"},\"Name\":\"InputData.CurrentMonth\",\"NativeReferenceName\":\"CurrentMonth\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"CurrentMonth\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
@@ -450,17 +454,6 @@
           "z": 0.00
         }
       ],
-      "width": 1280.00
-    },
-    {
-      "config": "{}",
-      "displayName": "PageA",
-      "displayOption": 1,
-      "filters": "[]",
-      "height": 720.00,
-      "name": "f7ce2829664908494891",
-      "ordinal": 4,
-      "visualContainers": [],
       "width": 1280.00
     }
   ],
