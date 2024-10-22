@@ -434,7 +434,11 @@
           "z": 2000.00
         },
         {
+<<<<<<< HEAD
           "config": "{\"name\":\"b29c9a05b9820c23584e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":920.6365871240827,\"y\":467.8893181272065,\"z\":3000,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"funnel\",\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'CommitC'\"}}}}}]}}}",
+=======
+          "config": "{\"name\":\"b29c9a05b9820c23584e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":920.6365871240827,\"y\":467.8893181272065,\"z\":3000,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"funnel\",\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'CommitB'\"}}}}}]}}}",
+>>>>>>> 68d24198b808d49886d58d7be89efa2400c1d7c2
           "filters": "[]",
           "height": 149.91,
           "width": 299.81,
