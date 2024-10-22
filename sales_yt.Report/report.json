@@ -418,6 +418,14 @@
           "width": 299.81,
           "x": 920.64,
           "y": 467.89,
+
+          "config": "{\"name\":\"c58ab583008291491a3d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":979.6905787323709,\"y\":25.741483521561523,\"z\":2001,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":2001}}],\"singleVisual\":{\"visualType\":\"hundredPercentStackedColumnChart\",\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 149.91,
+          "width": 299.81,
+          "x": 979.69,
+          "y": 25.74,
+
           "z": 2001.00
         },
         {
