@@ -403,13 +403,22 @@
           "z": 1000.00
         },
         {
-          "config": "{\"name\":\"489fda6578a25e03de50\",\"layouts\":[{\"id\":0,\"position\":{\"x\":96.90911443411396,\"y\":451.23306408384315,\"z\":1001,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":1001}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"drillFilterOtherVisuals\":true}}",
+          "config": "{\"name\":\"489fda6578a25e03de50\",\"layouts\":[{\"id\":0,\"position\":{\"x\":96.90911443411396,\"y\":451.23306408384315,\"z\":2000,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"drillFilterOtherVisuals\":true}}",
           "filters": "[]",
           "height": 149.91,
           "width": 299.81,
           "x": 96.91,
           "y": 451.23,
-          "z": 1001.00
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"c58ab583008291491a3d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":979.6905787323709,\"y\":25.741483521561523,\"z\":2001,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":2001}}],\"singleVisual\":{\"visualType\":\"hundredPercentStackedColumnChart\",\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 149.91,
+          "width": 299.81,
+          "x": 979.69,
+          "y": 25.74,
+          "z": 2001.00
         },
         {
           "config": "{\"name\":\"e52a515885048b32b535\",\"layouts\":[{\"id\":0,\"position\":{\"x\":640.4911742133537,\"y\":199.41673062164236,\"z\":0,\"width\":279.96930161166534,\"height\":160.12279355333843,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"InputData.CurrentMonth\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"InputData\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"CurrentMonth\"},\"Name\":\"InputData.CurrentMonth\",\"NativeReferenceName\":\"CurrentMonth\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"CurrentMonth\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
