@@ -366,6 +366,17 @@
       "width": 1280.00
     },
     {
+      "config": "{}",
+      "displayName": "PageB",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "2b9808b4880d0cb8eb10",
+      "ordinal": 5,
+      "visualContainers": [],
+      "width": 1280.00
+    },
+    {
       "config": "{\"type\":1}",
       "displayName": "tool",
       "displayOption": 3,
