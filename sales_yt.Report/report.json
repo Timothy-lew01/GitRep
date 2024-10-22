@@ -432,7 +432,11 @@
         },
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
           "config": "{\"name\":\"c58ab583008291491a3d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":979.6905787323709,\"y\":25.741483521561523,\"z\":4000,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"hundredPercentStackedColumnChart\",\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'CommitA'\"}}}}}]}}}",
+=======
+          "config": "{\"name\":\"c58ab583008291491a3d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":979.6905787323709,\"y\":25.741483521561523,\"z\":2001,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":2001}}],\"singleVisual\":{\"visualType\":\"hundredPercentStackedColumnChart\",\"drillFilterOtherVisuals\":true}}",
+>>>>>>> parent of 472f088 (PageA)
 =======
           "config": "{\"name\":\"c58ab583008291491a3d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":979.6905787323709,\"y\":25.741483521561523,\"z\":2001,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":2001}}],\"singleVisual\":{\"visualType\":\"hundredPercentStackedColumnChart\",\"drillFilterOtherVisuals\":true}}",
 >>>>>>> parent of 472f088 (PageA)
