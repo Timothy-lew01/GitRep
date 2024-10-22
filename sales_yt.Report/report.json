@@ -462,6 +462,17 @@
         }
       ],
       "width": 1280.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Page02",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "d5a622d05343820a3220",
+      "ordinal": 5,
+      "visualContainers": [],
+      "width": 1280.00
     }
   ],
   "theme": "AccessibleTidal"
