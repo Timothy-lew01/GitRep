@@ -1,0 +1,18 @@
+relationship 8665de1f-69c8-4f5a-856b-65552ace1aea
+	joinOnDateBehavior: datePartOnly
+	fromColumn: InputData.DATE
+	toColumn: LocalDateTable_cb96d899-a7a7-4fa4-8efa-a3918055fc38.Date
+
+relationship AutoDetected_22ff93be-2a7b-4994-80fa-9443457e21ae
+	fromColumn: InputData.'PRODUCT ID'
+	toColumn: MasterData.'PRODUCT ID'
+
+relationship AutoDetected_282cc47d-85e0-44b7-a0f3-b72fdc9c4dfb
+	fromColumn: InputData.'Month Name'
+	toColumn: 'month sort'.'Month Name'
+
+relationship 80defd7f-5b1b-47c2-9429-de9b0a5a7e2b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: InputData.'Start of Month'
+	toColumn: LocalDateTable_9d5b06aa-0757-4566-b376-44d181c344f0.Date
+
