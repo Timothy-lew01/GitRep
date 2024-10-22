@@ -1,0 +1,66 @@
+table MasterData
+	lineageTag: a3c858e1-06eb-4a78-b9bd-644e5b3769af
+
+	column 'PRODUCT ID'
+		dataType: string
+		lineageTag: b8add5a5-93d7-4458-b89c-8f94f464e764
+		summarizeBy: none
+		sourceColumn: PRODUCT ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT
+		dataType: string
+		lineageTag: 0a77bdea-8e51-4ca5-b5fb-c7257ffedfa8
+		summarizeBy: none
+		sourceColumn: PRODUCT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CATEGORY
+		dataType: string
+		lineageTag: 7f767df2-707b-40bb-b809-2ae763beb1d1
+		summarizeBy: none
+		sourceColumn: CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column UOM
+		dataType: string
+		lineageTag: 36835d11-b66c-4af3-86cc-3594e20b5fc8
+		summarizeBy: none
+		sourceColumn: UOM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'BUYING PRIZE'
+		dataType: int64
+		formatString: 0
+		lineageTag: f7fdf8ea-9421-43af-856e-969cbd9dfa73
+		summarizeBy: none
+		sourceColumn: BUYING PRIZE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SELLING PRICE'
+		dataType: double
+		lineageTag: e666fa90-64db-40b9-b5cb-54a5823af654
+		summarizeBy: none
+		sourceColumn: SELLING PRICE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition MasterData = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\TimothyLew\OneDrive - AGEG Innovation Ltd\Documents\Projet perso\Sales-Dashboard-practice-file.xlsx"), null, true),
+				    MasterData_Table = Source{[Item="MasterData",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(MasterData_Table,{{"PRODUCT ID", type text}, {"PRODUCT", type text}, {"CATEGORY", type text}, {"UOM", type text}, {"BUYING PRIZE", Int64.Type}, {"SELLING PRICE", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

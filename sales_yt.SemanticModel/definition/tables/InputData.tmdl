@@ -1,0 +1,483 @@
+table InputData
+	lineageTag: d12250c6-96a4-48fa-9e18-e45f607b7f1d
+
+	measure Profit = ```
+			
+			    SUM(InputData[Total Selling Value]) - 
+			    SUM(InputData[Total Buying Value])
+			
+			```
+		displayFolder: Measures\calculations
+		lineageTag: 07c693c3-496d-44b0-90ab-ed3f34502bb9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'profit %' = [Profit]/SUM(InputData[Total Buying Value])
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Measures\calculations
+		lineageTag: a30ae6a4-b6ee-4e66-8c28-24a91430aca0
+
+	measure SelectedFilters = ```
+			
+			VAR YearFilter = IF(ISFILTERED(InputData[Year]), "Year: " & CONCATENATEX(VALUES(InputData[Year]), InputData[Year], ", "), "")
+			VAR MonthFilter = IF(ISFILTERED('month sort'[Month Name]), "Month: " & CONCATENATEX(VALUES('month sort'[Month Name]), 'month sort'[Month Name], ", "), "")
+			VAR DayFilter = IF(ISFILTERED(InputData[Day]), "Day: " & CONCATENATEX(VALUES(InputData[Day]), InputData[Day], ", "), "")
+			VAR PaymentMethodFilter = IF(ISFILTERED(InputData[PAYMENT MODE]), "Payment Method: " & CONCATENATEX(VALUES(InputData[PAYMENT MODE]), InputData[PAYMENT MODE], ", "), "")
+			VAR TypeFilter = IF(ISFILTERED(InputData[SALE TYPE]), "Sale type: " & CONCATENATEX(VALUES(InputData[SALE TYPE]), InputData[SALE TYPE], ", "), "")
+			
+			RETURN
+			IF (
+			    YearFilter <> "" || MonthFilter <> "" || DayFilter <> "" || PaymentMethodFilter <> "" || TypeFilter <> "",
+			    "Filters Applied " & YearFilter & "" & MonthFilter & DayFilter & PaymentMethodFilter & TypeFilter,
+			    "No filters applied"
+			)
+			
+			
+			```
+		displayFolder: Measures\Displaytext
+		lineageTag: 5e8acfe1-4a41-4e6b-8fc9-dd6d7bbe3958
+
+	measure LastMonthSell = ```
+			CALCULATE(
+			        SUM(InputData[Total Selling Value]),
+			        DATEADD(InputData[Start of Month].[Date], -1, MONTH)
+			    )
+			
+			
+			```
+		displayFolder: Measures\calculations
+		lineageTag: 8bec9c88-b9b7-4f81-adb1-621d474a6ae7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure TMonth = ```
+			
+			CALCULATE(
+			    SUMX(InputData, InputData[QUANTITY] * InputData[MasterData.BUYING PRIZE]),
+			    FILTER(InputData, InputData[Start of Month] = MAX(InputData[Start of Month]))
+			)
+			
+			
+			
+			```
+		formatString: 0
+		displayFolder: Measures\Debug
+		lineageTag: 7ac7014e-abdd-448c-ae94-ba35ea4302fd
+
+	measure 'Percentage Change' = ```
+			
+			VAR _CurrentMonthValue = 
+			    CALCULATE(
+			        SUMX(InputData, InputData[QUANTITY] * InputData[MasterData.SELLING PRICE] * (1 - InputData[DISCOUNT %]))
+			    )
+			VAR _LastMonthValue =
+			    CALCULATE(
+			        SUM(InputData[Total Selling Value]),
+			        DATEADD(InputData[Start of Month].[Date], -1, MONTH)
+			    )
+			VAR _final =
+			   IF(
+			       _LastMonthValue = 0 || ABS(_LastMonthValue) < 0.01,  -- Handle division by zero and very small values
+			       BLANK(),
+			       (_CurrentMonthValue - _LastMonthValue) / _LastMonthValue
+			   )
+			
+			RETURN
+			   _final
+			
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Measures\calculations
+		lineageTag: c2d3089a-7e6c-4832-a6b7-7e938fda953d
+
+	/// From Last Month
+	/// 
+	measure TextOnly = "From Last Month"
+		displayFolder: Measures\Displaytext
+		lineageTag: 7cf44fdc-efb9-4735-9f8f-ba98ec2d5384
+
+	measure 'Triangle Arrow' = ```
+			
+			VAR CurrentMonthValue = [TMonth]
+			VAR LastMonthValue = CALCULATE(
+			    [TMonth], 
+			    PARALLELPERIOD(InputData[Start of Month], -1, MONTH)
+			)
+			RETURN 
+			    IF(CurrentMonthValue > LastMonthValue, "▲", "▼")
+			
+			```
+		displayFolder: Measures\Displaytext
+		lineageTag: 38e7b143-09b9-4e3d-99dd-c046b32b0da5
+
+	measure CurrentMonth = ```
+			
+			CALCULATE(
+			    SUMX(InputData, InputData[QUANTITY]*InputData[MasterData.SELLING PRICE]*(1-InputData[DISCOUNT %])),
+			    FILTER(InputData,  MAX(InputData[Start of Month]))
+			)
+			
+			```
+		formatString: 0
+		displayFolder: Measures\calculations
+		lineageTag: 4d927310-28e7-40ef-b50f-3c948c9dea28
+
+	measure LastMonth = ```
+			
+			CALCULATE(
+			    SUMX(InputData, InputData[QUANTITY] * InputData[MasterData.BUYING PRIZE]),
+			    PARALLELPERIOD(InputData[Start of Month], -1, MONTH)
+			)
+			
+			```
+		formatString: 0
+		displayFolder: Measures\calculations
+		lineageTag: b07e7637-6eb4-4d63-8c5b-4a5341bd55af
+
+	measure TESTLATEST =
+			
+			CALCULATE(
+			    SUM(InputData[MasterData.SELLING PRICE]),
+			    FILTER(
+			        InputData,
+			        YEAR(InputData[Start of Month]) = YEAR(MAX(InputData[Start of Month]))
+			        && MONTH(InputData[Start of Month]) = MONTH(MAX(InputData[Start of Month]))
+			    )
+			)
+		displayFolder: Measures\Debug
+		lineageTag: 828475ac-a5a9-4785-a9fe-a1e8ead2686c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Icon = IF([Percentage Change]<0,"-ve","+ve")
+		displayFolder: Measures\Displaytext
+		lineageTag: 900705cd-fbb3-4c77-bf58-ce1d90654099
+
+	measure CombinedValue = ```
+			
+			VAR _icon = 
+			    IF([Percentage Change] > 0, "▲", 
+			        IF([Percentage Change] < 0, "▼", "—"))
+			RETURN _icon & " " & FORMAT([Percentage Change], "0.0%") & " From Last Month"
+			
+			
+			```
+		displayFolder: Measures\Displaytext
+		lineageTag: 4f59c790-2598-4db2-a68c-013b1b61b533
+
+	/// colour format for data points
+	/// 
+	measure ColourFormat = ```
+			
+			VAR var_1 = InputData[CurrentMonth]
+			VAR var_2 = InputData[LastMonthSell]
+			
+			RETURN
+			    SWITCH(TRUE(),
+			        ISBLANK(var_1) || ISBLANK(var_2), "#B0B0B0",  -- Neutral color for blanks (e.g., gray)
+			        var_1 > var_2, "#145a5a",  -- Green if CurrentMonth is greater than LastMonthSell
+			        var_1 < var_2, "#C73D40",  -- Red if CurrentMonth is less than LastMonthSell
+			        "#FFFFFF"  -- Default color (White) if they are equal (optional)
+			    )
+			
+			
+			```
+		displayFolder: Measures\Colour
+		lineageTag: 1ec60732-fef3-407e-a159-ff3d66a09341
+
+	measure 'Title Text current' = FORMAT([CurrentMonth],"$#,0")
+		displayFolder: Measures\Conversion
+		lineageTag: 0a4896e8-7319-40f7-8862-2862fb21025b
+
+	measure 'colour with trend' =
+			
+			VAR var_1 = [CurrentMonth]
+			VAR result=
+			SWITCH(TRUE(),
+			var_1>0,"#145a5a",
+			var_1=0,"#999999",
+			var_1<0,"#C73D40")
+			RETURN
+			result
+		displayFolder: Measures\Colour
+		lineageTag: b8d51a38-d66e-472e-a80f-21f68a8bfd08
+
+	measure 'subtitle percent' = ```
+			FORMAT([Percentage Change], "0.0%")
+			
+			```
+		displayFolder: Measures\Conversion
+		lineageTag: 8da481ec-adeb-4844-9ed4-189e62c6c1bf
+
+	measure ColourFormatMeasure = ```
+			
+			VAR var_1 = InputData[CurrentMonth]
+			VAR var_2 = InputData[LastMonthSell]
+			
+			RETURN
+			    "CurrentMonth: " & var_1 & " LastMonthSell: " & var_2 &
+			    SWITCH(TRUE(),
+			        var_1 > var_2, "Positive",  
+			        var_1 = var_2, "Equal",     
+			        var_1 < var_2, "Negative"   
+			    )
+			
+			
+			```
+		lineageTag: 5e81aa5b-eabb-4016-ade6-4b198047bacb
+
+	measure DifferenceIndicator = ```
+			
+			VAR CurrentValue = InputData[CurrentMonth]
+			VAR LastValue = CALCULATE(
+			    SUM(InputData[Total Selling Value]),
+			    DATEADD(InputData[Start of Month].[Date], -1, MONTH)
+			)
+			RETURN 
+			    IF(
+			        ISBLANK(LastValue), 
+			        0,  
+			        IF(CurrentValue > LastValue, 
+			            1,  
+			            IF(CurrentValue < LastValue, 
+			                -1,  
+			                0     
+			            )
+			        )
+			    )
+			
+			```
+		formatString: 0
+		lineageTag: e409c2f7-3f86-40b0-9e74-9bb4a173e378
+
+	measure Forecast = ```
+			
+			VAR LastActualDate = MAX(InputData[Start of Month]) -- Get the last available date
+			VAR FutureDate = MAX(InputData[Start of Month]) -- Get the future date for forecasting
+			VAR MonthsFromLast = DATEDIFF(LastActualDate, FutureDate, MONTH) -- Calculate months between last actual data and forecast date
+			VAR AvgChange = 
+			    CALCULATE (
+			        AVERAGEX (
+			            DATESINPERIOD(InputData[Start of Month], LastActualDate, -12, MONTH), -- Look at the past 12 months
+			            [CurrentMonth] - 
+			            CALCULATE([CurrentMonth], PREVIOUSMONTH(InputData[Start of Month])) -- Calculate month-over-month change
+			        )
+			    )
+			RETURN 
+			    IF (FutureDate > LastActualDate, 
+			        [CurrentMonth] + (MonthsFromLast * AvgChange), -- Forecast future months
+			        [CurrentMonth] -- Use actual value for existing months
+			    )
+			
+			```
+		lineageTag: bec508e9-a851-411e-af07-d2cc6b072b76
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'place holder' = "SAMPLE TEXT"
+		lineageTag: 2607c917-488f-4681-9e24-c0e8e406bd0c
+
+	column DATE
+		dataType: dateTime
+		formatString: Long Date
+		displayFolder: Data date
+		lineageTag: 58ebd8f7-2b9f-4e0d-a390-372d897ee80d
+		summarizeBy: none
+		sourceColumn: DATE
+
+		variation Variation
+			isDefault
+			relationship: 8665de1f-69c8-4f5a-856b-65552ace1aea
+			defaultHierarchy: LocalDateTable_cb96d899-a7a7-4fa4-8efa-a3918055fc38.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'PRODUCT ID'
+		dataType: string
+		displayFolder: OG data
+		lineageTag: 647ba1f9-ea84-460b-8bf2-81f05576c0aa
+		summarizeBy: none
+		sourceColumn: PRODUCT ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column QUANTITY
+		dataType: int64
+		formatString: 0
+		displayFolder: OG data
+		lineageTag: 37c87661-c990-4565-b731-af531a567d50
+		summarizeBy: none
+		sourceColumn: QUANTITY
+
+		annotation SummarizationSetBy = User
+
+	column 'SALE TYPE'
+		dataType: string
+		displayFolder: OG data
+		lineageTag: e3e08ed0-707e-4e00-a9d4-d673bb808ff2
+		summarizeBy: none
+		sourceColumn: SALE TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PAYMENT MODE'
+		dataType: string
+		displayFolder: OG data
+		lineageTag: 2f3ed308-e5a2-4a1c-b6aa-dba012c747b3
+		summarizeBy: none
+		sourceColumn: PAYMENT MODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'DISCOUNT %'
+		dataType: int64
+		formatString: 0
+		displayFolder: OG data
+		lineageTag: cd98031b-17bd-4f30-8c18-6a1752d5c7d8
+		summarizeBy: sum
+		sourceColumn: DISCOUNT %
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		displayFolder: Data date
+		lineageTag: 8210bfbc-5ede-4c06-86c8-55129acb4671
+		summarizeBy: sum
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		displayFolder: Data date
+		lineageTag: 28525dad-53be-49f4-b22d-d4b57cd56705
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		displayFolder: OG data
+		lineageTag: 1f2a83d2-a23a-4cfc-b5cf-cdd35675dbc1
+		summarizeBy: none
+		sourceColumn: Month Name
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MasterData.PRODUCT'
+		dataType: string
+		displayFolder: MasterData
+		lineageTag: 0ee1717d-889d-4211-8180-3c9c8c3770f6
+		summarizeBy: none
+		sourceColumn: MasterData.PRODUCT
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MasterData.CATEGORY'
+		dataType: string
+		displayFolder: MasterData
+		lineageTag: 50c0290f-7408-44d2-a86a-6c709c8281fa
+		summarizeBy: none
+		sourceColumn: MasterData.CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MasterData.UOM'
+		dataType: string
+		displayFolder: MasterData
+		lineageTag: 62137861-19bc-4d1a-b33e-f690d0e6724b
+		summarizeBy: none
+		sourceColumn: MasterData.UOM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MasterData.BUYING PRIZE'
+		dataType: int64
+		formatString: 0
+		displayFolder: MasterData
+		lineageTag: 4b08c34d-d04a-4d06-aa85-487543149c50
+		summarizeBy: none
+		sourceColumn: MasterData.BUYING PRIZE
+
+		annotation SummarizationSetBy = User
+
+	column 'MasterData.SELLING PRICE'
+		dataType: double
+		displayFolder: MasterData
+		lineageTag: fa773ffe-b88c-4a03-8051-ff73748a2e55
+		summarizeBy: sum
+		sourceColumn: MasterData.SELLING PRICE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Buying Value' = InputData[QUANTITY]*InputData[MasterData.BUYING PRIZE]
+		dataType: int64
+		formatString: 0
+		displayFolder: OG data
+		lineageTag: 64d2a7a9-d0aa-4f2d-9712-da834ba3c5b9
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Total Selling Value' = InputData[QUANTITY]*InputData[MasterData.SELLING PRICE]*(1-InputData[DISCOUNT %])
+		dataType: double
+		formatString: 0.0
+		displayFolder: OG data
+		lineageTag: e20f2a73-601b-4a0f-a6ef-49d13f52f112
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Most Important one
+	column 'Start of Month'
+		dataType: dateTime
+		formatString: Long Date
+		displayFolder: Data date
+		lineageTag: 195e2537-ec8c-4ffa-9a4b-bc18894cda95
+		summarizeBy: none
+		sourceColumn: Start of Month
+
+		variation Variation
+			isDefault
+			relationship: 80defd7f-5b1b-47c2-9429-de9b0a5a7e2b
+			defaultHierarchy: LocalDateTable_9d5b06aa-0757-4566-b376-44d181c344f0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition InputData = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\TimothyLew\OneDrive - AGEG Innovation Ltd\Documents\Projet perso\Sales-Dashboard-practice-file.xlsx"), null, true),
+				    InputData_Table = Source{[Item="InputData",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(InputData_Table,{{"DATE", type date}, {"PRODUCT ID", type text}, {"QUANTITY", Int64.Type}, {"SALE TYPE", type text}, {"PAYMENT MODE", type text}, {"DISCOUNT %", Int64.Type}}),
+				    #"Inserted Day" = Table.AddColumn(#"Changed Type", "Day", each Date.Day([DATE]), Int64.Type),
+				    #"Inserted Year" = Table.AddColumn(#"Inserted Day", "Year", each Date.Year([DATE]), Int64.Type),
+				    #"Inserted Month Name" = Table.AddColumn(#"Inserted Year", "Month Name", each Date.MonthName([DATE]), type text),
+				    #"Merged Queries" = Table.NestedJoin(#"Inserted Month Name", {"PRODUCT ID"}, MasterData, {"PRODUCT ID"}, "MasterData", JoinKind.LeftOuter),
+				    #"Filtered Rows" = Table.SelectRows(#"Merged Queries", each true),
+				    #"Sorted Rows" = Table.Sort(#"Filtered Rows",{{"PRODUCT ID", Order.Ascending}}),
+				    #"Expanded MasterData" = Table.ExpandTableColumn(#"Sorted Rows", "MasterData", {"PRODUCT", "CATEGORY", "UOM", "BUYING PRIZE", "SELLING PRICE"}, {"MasterData.PRODUCT", "MasterData.CATEGORY", "MasterData.UOM", "MasterData.BUYING PRIZE", "MasterData.SELLING PRICE"}),
+				    #"Inserted Start of Month" = Table.AddColumn(#"Expanded MasterData", "Start of Month", each Date.StartOfMonth([DATE]), type date)
+				in
+				    #"Inserted Start of Month"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
