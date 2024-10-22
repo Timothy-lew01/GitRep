@@ -403,13 +403,13 @@
           "z": 1000.00
         },
         {
-          "config": "{\"name\":\"db8cccb95091407d15b4\",\"layouts\":[{\"id\":0,\"position\":{\"x\":78.7386554777176,\"y\":463.3467033881074,\"z\":1001,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":1001}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"drillFilterOtherVisuals\":true}}",
+          "config": "{\"name\":\"db8cccb95091407d15b4\",\"layouts\":[{\"id\":0,\"position\":{\"x\":78.7386554777176,\"y\":463.3467033881074,\"z\":2000,\"width\":299.8125727805401,\"height\":149.90628639027005,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"drillFilterOtherVisuals\":true}}",
           "filters": "[]",
           "height": 149.91,
           "width": 299.81,
           "x": 78.74,
           "y": 463.35,
-          "z": 1001.00
+          "z": 2000.00
         },
         {
           "config": "{\"name\":\"e52a515885048b32b535\",\"layouts\":[{\"id\":0,\"position\":{\"x\":640.4911742133537,\"y\":199.41673062164236,\"z\":0,\"width\":279.96930161166534,\"height\":160.12279355333843,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"InputData.CurrentMonth\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"InputData\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"CurrentMonth\"},\"Name\":\"InputData.CurrentMonth\",\"NativeReferenceName\":\"CurrentMonth\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"CurrentMonth\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
