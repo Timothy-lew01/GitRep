@@ -32,6 +32,20 @@
         "name": "SharedResources",
         "type": 2
       }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "Screenshot_2024-10-21_14540724924658540287314.png",
+            "path": "Screenshot_2024-10-21_14540724924658540287314.png",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
     }
   ],
   "sections": [
@@ -544,6 +558,15 @@
           "x": 10.00,
           "y": 570.00,
           "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"8f875e2c710e1d4de681\",\"layouts\":[{\"id\":0,\"position\":{\"x\":921.9923371647509,\"y\":66.20689655172413,\"z\":7001,\"width\":252.56704980842912,\"height\":654.7126436781609,\"tabOrder\":7001}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"Screenshot_2024-10-21_14540724924658540287314.png\"}}}}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 654.71,
+          "width": 252.57,
+          "x": 921.99,
+          "y": 66.21,
+          "z": 7001.00
         },
         {
           "config": "{\"name\":\"e6f962807ce0b2a98d30\",\"layouts\":[{\"id\":0,\"position\":{\"x\":300,\"y\":0,\"width\":280,\"height\":280,\"z\":3000,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"drillFilterOtherVisuals\":true}}",
