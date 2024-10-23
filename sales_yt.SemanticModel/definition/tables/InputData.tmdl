@@ -278,8 +278,8 @@ table InputData
 	measure 'place holder' = "SAMPLE TEXT"
 		lineageTag: 2607c917-488f-4681-9e24-c0e8e406bd0c
 
-	measure Measure2A
-		lineageTag: 2521c1cf-4fe2-4a6c-8835-d110d85b4d6a
+	measure Measure2B
+		lineageTag: e83f649e-f9f1-46be-9ac4-4f12ae71904c
 
 	column DATE
 		dataType: dateTime
