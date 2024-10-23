@@ -402,7 +402,7 @@
       "filters": "[]",
       "height": 720.00,
       "name": "42df2ad33700c5201ee8",
-      "ordinal": 6,
+      "ordinal": 5,
       "visualContainers": [
         {
           "config": "{\"name\":\"331c3e18cc297aa09a26\",\"layouts\":[{\"id\":0,\"position\":{\"x\":181.70458956396368,\"y\":96.90911443411396,\"z\":0,\"width\":919.1223822110496,\"height\":448.20465425777707,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Category\":[{\"queryRef\":\"month sort.Month Name\",\"active\":true}],\"Y\":[{\"queryRef\":\"InputData.LastMonthSell\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"month sort\",\"Type\":0},{\"Name\":\"i\",\"Entity\":\"InputData\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Month Name\"},\"Name\":\"month sort.Month Name\",\"NativeReferenceName\":\"Count of Month Name\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"LastMonthSell\"},\"Name\":\"InputData.LastMonthSell\",\"NativeReferenceName\":\"LastMonthSell\"}]},\"drillFilterOtherVisuals\":true}}",
