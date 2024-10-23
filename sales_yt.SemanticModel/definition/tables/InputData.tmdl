@@ -281,11 +281,11 @@ table InputData
 	measure Measure2B
 		lineageTag: e83f649e-f9f1-46be-9ac4-4f12ae71904c
 
-	measure Measure3B
-		lineageTag: 2a3dd2df-345a-4f03-a857-168898ebf8e4
-
 	measure Measure3A
 		lineageTag: 154bab51-11b0-4f6f-b5c9-dc4f408ab1ea
+
+	measure Measure3B
+		lineageTag: 2a3dd2df-345a-4f03-a857-168898ebf8e4
 
 	column DATE
 		dataType: dateTime
