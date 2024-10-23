@@ -9,7 +9,7 @@ table InputData
 			```
 		displayFolder: Measures\calculations
 		lineageTag: 07c693c3-496d-44b0-90ab-ed3f34502bb9
-;h
+
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'profit %' = [Profit]/SUM(InputData[Total Buying Value])
