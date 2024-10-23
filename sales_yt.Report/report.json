@@ -506,6 +506,15 @@
       "ordinal": 7,
       "visualContainers": [
         {
+          "config": "{\"name\":\"0e6aed9958ae184bc479\",\"layouts\":[{\"id\":0,\"position\":{\"x\":919.7014925373134,\"y\":21.492537313432834,\"z\":10000,\"width\":300,\"height\":300,\"tabOrder\":10000}}],\"singleVisual\":{\"visualType\":\"hundredPercentStackedAreaChart\",\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 300.00,
+          "width": 300.00,
+          "x": 919.70,
+          "y": 21.49,
+          "z": 10000.00
+        },
+        {
           "config": "{\"name\":\"1924ac3e10a690900bb9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":590,\"y\":0,\"width\":280,\"height\":280,\"z\":6000,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"areaChart\",\"drillFilterOtherVisuals\":true}}",
           "filters": "[]",
           "height": 280.00,
