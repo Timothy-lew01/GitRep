@@ -741,6 +741,27 @@
     },
     {
       "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ad1e4913823308c9d303",
+      "ordinal": 10,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"43db81887cc5aa0ae685\",\"layouts\":[{\"id\":0,\"position\":{\"x\":25.90765338393422,\"y\":40.48070841239722,\"z\":0,\"width\":516.5338393421885,\"height\":385.3763440860215,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"lineStackedColumnComboChart\",\"projections\":{\"Y\":[{\"queryRef\":\"InputData.DifferenceIndicator\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"InputData\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"DifferenceIndicator\"},\"Name\":\"InputData.DifferenceIndicator\",\"NativeReferenceName\":\"DifferenceIndicator\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"DifferenceIndicator\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 385.38,
+          "width": 516.53,
+          "x": 25.91,
+          "y": 40.48,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{}",
       "displayName": "TESTING",
       "displayOption": 1,
       "filters": "[]",
