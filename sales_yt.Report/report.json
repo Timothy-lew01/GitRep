@@ -644,13 +644,13 @@
       "ordinal": 8,
       "visualContainers": [
         {
-          "config": "{\"name\":\"512e3c51d400c0a924d0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":880,\"y\":0,\"width\":280,\"height\":280,\"z\":5002,\"tabOrder\":5002}}],\"singleVisual\":{\"visualType\":\"waterfallChart\",\"drillFilterOtherVisuals\":true}}",
+          "config": "{\"name\":\"512e3c51d400c0a924d0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":880,\"y\":0,\"width\":280,\"height\":280,\"z\":7000,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"waterfallChart\",\"drillFilterOtherVisuals\":true}}",
           "filters": "[]",
           "height": 280.00,
           "width": 280.00,
           "x": 880.00,
           "y": 0.00,
-          "z": 5002.00
+          "z": 7000.00
         },
         {
           "config": "{\"name\":\"73b0495050c563c244ec\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10,\"y\":570,\"width\":280,\"height\":150,\"z\":2000,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"drillFilterOtherVisuals\":true}}",
@@ -662,13 +662,13 @@
           "z": 2000.00
         },
         {
-          "config": "{\"name\":\"7dc665ac2a096942600c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":590,\"y\":0,\"width\":280,\"height\":280,\"z\":5001,\"tabOrder\":5001}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"drillFilterOtherVisuals\":true}}",
+          "config": "{\"name\":\"7dc665ac2a096942600c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":590,\"y\":0,\"width\":280,\"height\":280,\"z\":6000,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"drillFilterOtherVisuals\":true}}",
           "filters": "[]",
           "height": 280.00,
           "width": 280.00,
           "x": 590.00,
           "y": 0.00,
-          "z": 5001.00
+          "z": 6000.00
         },
         {
           "config": "{\"name\":\"8fcbad44d5296458ebbd\",\"layouts\":[{\"id\":0,\"position\":{\"x\":300,\"y\":290,\"width\":280,\"height\":280,\"z\":4000,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"hundredPercentStackedBarChart\",\"drillFilterOtherVisuals\":true}}",
