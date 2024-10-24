@@ -472,9 +472,13 @@ table InputData
 		mode: import
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\TimothyLew\OneDrive - AGEG Innovation Ltd\Documents\Projet perso\Sales-Dashboard-practice-file.xlsx"), null, true),
-				    InputData_Table = Source{[Item="InputData",Kind="Table"]}[Data],
-				    #"Changed Type" = Table.TransformColumnTypes(InputData_Table,{{"DATE", type date}, {"PRODUCT ID", type text}, {"QUANTITY", Int64.Type}, {"SALE TYPE", type text}, {"PAYMENT MODE", type text}, {"DISCOUNT %", Int64.Type}}),
+				    Source = SharePoint.Files("https://datapilotfr.sharepoint.com/sites/DP-Client-Internal/", [ApiVersion = 15]),
+				    #"Filtered Rows1" = Table.SelectRows(Source, each Text.Contains([Name], "Sales-Dashboard-practice")),
+				    #"Sales-Dashboard-practice-file xlsx_https://datapilotfr sharepoint com/sites/DP-Client-Internal/Shared Documents/Project/Internal Data/Data for git test/" = #"Filtered Rows1"{[Name="Sales-Dashboard-practice-file.xlsx",#"Folder Path"="https://datapilotfr.sharepoint.com/sites/DP-Client-Internal/Shared Documents/Project/Internal Data/Data for git test/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(#"Sales-Dashboard-practice-file xlsx_https://datapilotfr sharepoint com/sites/DP-Client-Internal/Shared Documents/Project/Internal Data/Data for git test/"),
+				    #"Input Data_Sheet" = #"Imported Excel Workbook"{[Item="Input Data",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Input Data_Sheet", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"DATE", type date}, {"PRODUCT ID", type text}, {"QUANTITY", Int64.Type}, {"SALE TYPE", type text}, {"PAYMENT MODE", type text}, {"DISCOUNT %", Int64.Type}}),
 				    #"Inserted Day" = Table.AddColumn(#"Changed Type", "Day", each Date.Day([DATE]), Int64.Type),
 				    #"Inserted Year" = Table.AddColumn(#"Inserted Day", "Year", each Date.Year([DATE]), Int64.Type),
 				    #"Inserted Month Name" = Table.AddColumn(#"Inserted Year", "Month Name", each Date.MonthName([DATE]), type text),
