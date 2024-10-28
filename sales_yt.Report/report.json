@@ -758,6 +758,15 @@
           "z": 0.00
         },
         {
+          "config": "{\"name\":\"513647a0128c97302885\",\"layouts\":[{\"id\":0,\"position\":{\"x\":708.6478992994583,\"y\":21.19886878246243,\"z\":1,\"width\":517.8580802572965,\"height\":284.67052365020976,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 284.67,
+          "width": 517.86,
+          "x": 708.65,
+          "y": 21.20,
+          "z": 1.00
+        },
+        {
           "config": "{\"name\":\"d6b34d1ab6070eb33850\",\"layouts\":[{\"id\":0,\"position\":{\"x\":673.8211862996986,\"y\":142.33526182510488,\"z\":1,\"width\":517.8580802572965,\"height\":284.67052365020976,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"stackedAreaChart\",\"drillFilterOtherVisuals\":true}}",
           "filters": "[]",
           "height": 284.67,
