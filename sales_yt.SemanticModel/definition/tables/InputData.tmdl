@@ -287,6 +287,10 @@ table InputData
 	measure Measure3B
 		lineageTag: 2a3dd2df-345a-4f03-a857-168898ebf8e4
 
+	measure 'Find me' = 0
+		formatString: 0
+		lineageTag: 1278d5a1-4f7a-4e0c-ab35-74b1e1dd4231
+
 	column DATE
 		dataType: dateTime
 		formatString: Long Date
